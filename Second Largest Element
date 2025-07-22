@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int secondLargestElement(vector<int>& nums) {
+        //your code goes here
+        int x = *max_element(nums.begin(),nums.end());
+
+        int ans(-1);
+        for(int i(0);i < nums.size();i++){
+            if(ans != x and ans < nums[i]) ans = nums[i];
+        }
+
+        return ans;
+    }
+};
