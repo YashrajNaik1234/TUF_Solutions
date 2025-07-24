@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<int> leaders(vector<int>& nums) {
+        vector<int> ans; int mx(INT_MIN); 
+        
+        for(int i(nums.size() - 1);i >= 0;i--){
+            if(nums[i] > mx) ans.push_back(a[i]);
+            mx = max(nums[i], mx);
+        }
+
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
+};
