@@ -1,0 +1,39 @@
+class Solution{
+public:
+    vector<int> getFloorAndCeil(vector<int> nums, int x)
+    {
+        int left = 0, right = nums.size() - 1;
+        int f(-1), c(-1);
+
+        while (left <= right)
+        {
+            int mid = left + (right - left + 1) / 2;
+            if (nums[mid] <= x)
+            {
+                f = nums[mid];
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid - 1;
+            }
+        }
+
+        left = 0, right = nums.size() - 1;
+        while (left <= right)
+        {
+            int mid = left + (right - left + 1) / 2;
+            if (nums[mid] > x)
+            {
+                c = nums[mid];
+                right = mid - 1;
+            }
+            else
+            {
+                left = mid + 1;
+            }
+        }
+
+        return {f, c};
+    }
+};
