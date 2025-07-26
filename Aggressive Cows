@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool canPlace(vector<int>& v, int mid, int k){
+        int count(0),last = v[0];
+        for(int i(1);i < v.size();i++){
+            if(v[i] - last >= mid){
+                count++; last = v[i];
+            }
+
+            if(count >= k) return 1;
+        }
+
+        return false;
+    }
+    int aggressiveCows(vector<int> &nums, int k) {
+        sort(nums.begin(),nums.end());
+        int low(0), high(nums[nums.size() - 1] - nums[0]);
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (canPlace(nums, mid, k) == true)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return high;
+    }
+};
