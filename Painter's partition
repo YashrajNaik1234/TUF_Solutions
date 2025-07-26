@@ -1,0 +1,35 @@
+class Solution {
+   public:
+    int cal(vector<int> &v, int mid) {
+        int painter(1);
+        int length(0);
+
+        for (int i(0); i < v.size(); i++) {
+            if (v[i] + length > mid) {
+                painter++;
+                length = v[i];
+            } else
+                length += v[i];
+        }
+
+        return painter;
+    }
+
+    int paint(int A, int B, vector<int> &C) {
+        // Your code goes here
+        int left(*max_element(C.begin(), C.end()));
+        int right(accumulate(C.begin(), C.end(), 0));
+
+        while (left <= right) {
+            int mid = left + (right - left + 1) / 2;
+
+            if (cal(C, A) > mid) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return left * B;
+    }
+};
