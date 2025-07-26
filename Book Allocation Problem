@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int cal(vector<int>& v, int mid){
+        int student(1);
+        long long int pages(0);
+        
+        for(int i(0);i < v.size();i++){
+           if(v[i] + pages > mid){
+                student++; pages = v[i];
+           }
+           else pages += v[i];
+        }
+
+        return student;
+    }
+    int findPages(vector<int> &nums, int m)  {
+        int low(*max_element(nums.begin(),nums.end()));
+        int high(accumulate(nums.begin(),nums.end(),0));
+        int ans(high);
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            long long int pages = cal(nums, mid);
+            if (pages <= m)
+                high = mid - 1;
+            else
+                low = mid + 1;
+        }
+
+        return low;
+    }
+};
