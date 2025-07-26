@@ -23,7 +23,7 @@ class Solution {
         while (left <= right) {
             int mid = left + (right - left + 1) / 2;
 
-            if (cal(C, A) > mid) {
+            if (cal(C, mid) > A * B) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
