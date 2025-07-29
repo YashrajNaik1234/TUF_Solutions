@@ -1,0 +1,38 @@
+class Solution {
+public:
+    ListNode *sortList(ListNode *head) {
+        ListNode* zeroH = new ListNode(0);
+        ListNode* zero = zeroH;
+        ListNode* oneH = new ListNode(0);
+        ListNode* one = oneH;
+        ListNode* twoH = new ListNode(0);
+        ListNode* two = twoH;
+
+        while(head != nullptr){
+            if(head -> val == 0){
+                ListNode* zeroval = new ListNode(head -> val);
+                zero -> next = zeroval;
+                zero = zero -> next;
+            }
+            if(head -> val == 1){
+                ListNode* oneval = new ListNode(head -> val);
+                one -> next = oneval;
+                one = one -> next;
+            }
+            else{
+                ListNode* twoval = new ListNode(head -> val);
+                two -> next = twoval;
+                two = two -> next;
+            }
+
+            head = head -> next;
+        }
+
+        if(oneH -> next != nullptr) zero -> next = oneH -> next;
+        else zero -> next = twoH -> next;
+        one -> next = twoH -> next;
+        two -> next = nullptr;
+        
+        return zeroH -> next;
+    }
+};
