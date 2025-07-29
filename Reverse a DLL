@@ -1,0 +1,20 @@
+class Solution {
+public:
+    ListNode* reverseDLL(ListNode* head) {
+        // Your code goes here
+        if(head == nullptr || head -> next == nullptr) return head;
+        
+        ListNode* dummy = head;
+        ListNode* temp = nullptr;
+        
+        while(dummy != nullptr){
+            temp = dummy -> prev;
+            dummy -> prev = dummy -> next;
+            dummy -> next = temp;
+            
+            dummy = dummy -> prev;
+        }
+
+        return temp -> prev;
+    }
+};
