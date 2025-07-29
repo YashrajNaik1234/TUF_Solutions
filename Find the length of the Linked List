@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int getLength(ListNode* head) {
+        // Your code goes here
+        int cnt(0);
+        while(head != nullptr){
+            cnt++; head = head -> next;
+        }
+
+        return cnt;
+    }
+};
