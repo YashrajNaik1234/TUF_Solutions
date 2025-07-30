@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int solve(ListNode* head){
+        if(!head) return 1;
+        int carry = solve(head -> next);
+        head -> data += carry;
+        if(head -> data < 10) return 0;
+        head -> data = 0;
+        return 1;
+    }
+    ListNode* addOne(ListNode* head) {
+        int carry = solve(head);
+        
+        if(carry){
+            ListNode* newNode = new ListNode(1);
+            newNode -> next = head;
+            head = newNode;
+        }
+
+        return head;
+    }
+};
