@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int length(ListNode* slow, ListNode* fast){
+        int count(1);
+        fast = fast -> next;
+        while(slow != fast){
+            count++; fast = fast -> next;
+        }
+
+        return count;
+    }
+    int lengthOfLoop(Node *head) {
+        // Code here
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while(fast != nullptr and fast -> next != nullptr){
+            slow = slow -> next;
+            fast = fast -> next -> next;
+            if(fast == slow) return length(slow, fast);
+        }
+        
+        return 0;
+    }
+};
