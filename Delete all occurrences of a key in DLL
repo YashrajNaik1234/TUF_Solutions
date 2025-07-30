@@ -1,0 +1,24 @@
+class Solution {
+public:
+    ListNode * deleteAllOccurrences(ListNode* head, int target) {
+        ListNode* temp = head;
+
+        while(temp != nullptr){
+            if(temp -> val == target){
+                
+                if(temp == head) head = temp -> next;
+
+                ListNode* nextNode = temp -> next;
+                ListNode* prevNode = temp -> prev;
+                if(temp -> next != nullptr) nextNode -> prev = prevNode;
+                if(temp -> prev != nullptr) prevNode -> next = nextNode;
+
+                free(temp);
+                temp = nextNode;
+            }
+            else temp = temp -> next;
+        }
+
+        return head;
+    }
+};
