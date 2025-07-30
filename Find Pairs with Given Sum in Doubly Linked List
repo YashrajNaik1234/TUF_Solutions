@@ -1,0 +1,28 @@
+class Solution {
+public:
+    ListNode* Tail(ListNode* head){
+        ListNode* t = head;
+        while(t -> next != nullptr) t = t -> next;
+        return t;
+    }
+    vector<vector<int>> findPairsWithGivenSum(ListNode* head, int target) {
+        // Your code goes here
+        vector<vector<int>> ans;
+
+        if(!head) return nullptr;
+        ListNode* left = head;
+        ListNode* right = Tail(head);
+
+        while(left -> data < right -> data){
+            if(left -> data + right -> data == target){
+                ans.push_back({left -> data, right -> data});
+                left = left -> next;
+                right = right -> prev;
+            }
+            else if(left -> data + right -> data < target) left = left -> next;
+            else right = right -> prev;
+        }
+
+        return ans;
+    }
+};
