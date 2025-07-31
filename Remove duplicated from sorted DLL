@@ -1,0 +1,20 @@
+class Solution {
+public:
+    ListNode * removeDuplicates(ListNode *head) {
+        ListNode* temp = head;
+        while(temp and temp -> next){
+            ListNode* nextNode = temp -> next;
+            while(nextNode and nextNode -> data == temp -> data){
+                ListNode* dupli = nextNode;
+                nextNode = nextNode -> next; free(dupli);
+            }
+            
+            temp -> next = nextNode;
+            if(nextNode) nextNode -> prev = temp;
+            
+            temp = temp -> next;
+        }
+        
+        return head;
+    }
+};
