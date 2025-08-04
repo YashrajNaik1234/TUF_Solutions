@@ -1,31 +1,31 @@
 class ArrayStack {
     int size;
     int * arr;
-    int top;
+    int t;
     public:
     ArrayStack() {
-        top = -1;
+        t = -1;
         size = 1000;
         arr = new int[size];
     }
     
     void push(int x) {
-        top++;
-        arr[top] = x;
+        t++;
+        arr[t] = x;
     }
     
     int pop() {
-        int y = arr[top];
-        top--;
+        int y = arr[t];
+        t--;
         return y;
     }
     
     int top() {
-        return arr[top];
+        return arr[t];
     }
     
     bool isEmpty() {
-        if(top != -1) return true;
+        if(t != -1) return true;
         return false;
     }
 };
