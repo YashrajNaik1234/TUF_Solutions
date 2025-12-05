@@ -36,6 +36,7 @@ class Solution {
             }
         }
 
+        for(int i(0);i < N;i++) if(dist[i] == INT_MAX) dist[i] = -1;
         return dist;
     }
 };
