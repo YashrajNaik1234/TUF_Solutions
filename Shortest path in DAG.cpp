@@ -20,7 +20,7 @@ class Solution {
             if (!vis[i]) toposort(i, adj, vis, st);
         }
 
-        vector<int> dist(N, -1);
+        vector<int> dist(N, INT_MAX);
         dist[0] = 0;
         while(!st.empty()){
             if(st.top() != 0) st.pop();
